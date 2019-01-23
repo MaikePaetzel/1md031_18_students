@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+<head>
+    <title>Page title shown in window title</title>
+    <meta charset="utf-8" />
+
+    <link rel="stylesheet" type="text/css" href="css/myStyle.css">
+</head>
+
+<body>
+
+
+    <!-- Logo and brand name here -->
+    <header> </header>
+
+
+    <!-- Burger Selection -->
+    <section class="burger-information-section">
+        <main>
+            <h1>Välkommen till BurgerHeaven Online</h1>
+            <p>This is where you execute burger selection</p>
+            <br>
+
+
+            <table>
+                <!-- Column headlines -->
+                <thead align="center">
+                    <tr>
+                        <th>Supreme Burger</th>
+                        <th>Extra cheese Burger</th>
+                        <th>Chicken Burger</th>
+                    </tr>
+                </thead>
+                <!-- Main Table -->
+                <tbody>
+                    <tr align="center">
+                        <td><img src="img/burger1.jpeg" alt="Bacon Burger" title="Burger1" width="200px"></th>
+                        <td><img src="img/burger2.jpeg" alt="Extra cheese Burger" title="Burger2" width="200px"></th>
+                        <td><img src="img/burger3.jpeg" alt="Chicken Burger" title="Burger3" width="200px"></th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <ul>
+                                <li>Kobe beef of the highest quality</li>
+                                <li>Covered in fancy cheese (contains <span class="emph">lactose</span>)</li>
+                                <li>Cold-leavened sourdough bread (contains <span class="emph">gluten</span>)</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Extra cheese imported from France</li>
+                                <li>Extra spicy cheese (contains <span class="emph">lactose</span>)</li>
+                                <li>Cold-leavened sourdough bread (contains <span class="emph">gluten</span>)</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Chicken beef of highest quality</li>
+                                <li>Added extra red pepper to enhance the experience </li>
+                                <li>All ingredients from local farmers</li>
+                            </ul>
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+            <!-- More info to come...-->
+        </main>
+    </section>
+
+
+    <section id="contact-info">
+    <!-- Custumer Info-->
+    <div id="customer-information">
+        <h3>Customer information</h3>
+        <p>This is where you provide necessary information</p>
+    </div>
+
+
+    <!--Delivery info-->
+    <h4>Delivery information</h4>
+
+    <main>
+            <form>
+                <p>
+                    <label for="firstname">Full name</label><br>
+                    <input type="text" id="full-name" name="fn" required="required" placeholder="First- and Last name">
+                </p>
+                <p>
+                    <label for="firstname">E-mail</label><br>
+                    <input type="email" id="firstname" name="em" required="required" placeholder="E-mail adress">
+                </p>
+                <p>
+                    <label for="firstname">Street</label><br>
+                    <input type="text" id="firstname" name="st" required="required" placeholder="Street name">
+                </p>
+                <p>
+                    <label for="firstname">House Number</label><br>
+                    <input type="number" id="firstname" name="house" required="required" placeholder="House number">
+                </p>
+
+
+                <p>Payment options</p>
+                <p>
+                    <label for="recipient">Recipient</label><br>
+                    <select id="recipient" name="rcp">
+                        <option>Credit card</option>
+                        <option>Swish</option>
+                        <option>Pay later</option>
+                    </select>
+                </p>
+
+
+                <!-- Buttons -->
+                <p>Gender</p>
+                <input type="radio" name="gender" value="male"> Male<br>
+                <input type="radio" name="gender" value="female"> Female<br>
+                <input type="radio" name="gender" value="Non-binary"> Non-binary<br>
+                <input type="radio" name="gender" value="Undisclosed" checked> Undisclosed <br>
+                <br>
+
+            </form>
+    </main>
+        </section>
+    
+
+                    <!--Submit button-->
+                    <button type="submit"><img src="img/send.png"> <span class="btn-text" id="send-text">Send Info</span></button>
+
+
+
+
+
+
+
+
+
+
+
+    <hr>
+
+    <!-- Info about contact information -->
+    <footer>
+        <p> &#169; Burger Inc.
+    </footer>
+
+</body>
+
+</html>
