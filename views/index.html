@@ -8,7 +8,15 @@
     <title>Page title shown in window title</title>
     <meta charset="utf-8" />
 
+    <!-- CSS FILES -->
     <link rel="stylesheet" type="text/css" href="css/myStyle.css">
+
+    <!-- Javascript files -->
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="js/js_script.js"></script>
+    
+    <!--- <script src="js/vue_script.js"></script> -->
+    
 </head>
 
 <body>
@@ -18,9 +26,10 @@
     <header> </header>
 
     <div class="header-banner">
-        <div class="g"><h1>BurgerHeaven Online</h1></div>
+        <div class="g"><h1>Burger Heaven</h1></div>
         <div id="banderoller"></div>
     </div>
+
 
 
     <!-- Burger Selection -->
@@ -29,52 +38,45 @@
             <h2>Select burger</h2>
             <br>
 
+            <div class="wrapper">
+                 <div class="box burger-heading" >Supreme</div>
+                 <div class="box burger-heading" >Extra cheese</div>
+                 <div class="box burger-heading" >Chicken royal</div>
 
-            <table>
-                <!-- Column headlines -->
-                <thead align="center">
-                    <tr>
-                        <th>Supreme Burger</th>
-                        <th>Extra cheese Burger</th>
-                        <th>Chicken Burger</th>
-                    </tr>
-                </thead>
-                <!-- Main Table -->
-                <tbody>
-                    <tr align="center">
-                        <td><img src="img/burger1.jpeg" alt="Bacon Burger" title="Burger1" width="200px"></th>
-                        <td><img src="img/burger2.jpeg" alt="Extra cheese Burger" title="Burger2" width="200px"></th>
-                        <td><img src="img/burger3.jpeg" alt="Chicken Burger" title="Burger3" width="200px"></th>
-                    </tr>
-                    <tr>
-                        <td>
-                            <ul>
-                                <li>850 kCal</li>
-                                <li>Contains <span class="emph">lactose</span></li>
-                                <li>Contains <span class="emph">gluten</span></li>
-                            </ul>
-                        </td>
-                        <td>
-                            <ul>
-                                <li>600 kCal</li>
-                                <li>Contains <span class="emph">lactose</span></li>
-                                <li>Contains <span class="emph">gluten</span></li>
-                            </ul>
-                        </td>
-                        <td>
-                            <ul>
-                                <li>Chicken beef of highest quality</li>
-                                <li>Very spicy!</li>
-                            </ul>
-                        </td>
-                    </tr>
-
-                </tbody>
-
-            </table>
-            <!-- More info to come...-->
+                <div class="box burger-img-container"><img src="img/burger1.jpeg" alt="Bacon Burger" title="Burger1" width="200px"></div>
+                <div class="box burger-img-container"><img src="img/burger1.jpeg" alt="Bacon Burger" title="Burger1" width="200px"></div>
+                <div class="box burger-img-container"><img src="img/burger1.jpeg" alt="Bacon Burger" title="Burger1" width="200px"></div>
+                <div class="box burger-desc-text">
+                    <ul>
+                        <li>850 kCal</li>
+                        <li>Contains <span class="emph">lactose</span></li>
+                        <li>Contains <span class="emph">gluten</span></li>
+                    </ul>
+                </div>
+                <div class="box burger-desc-text">
+                    <ul>
+                        <li>600 kCal</li>
+                        <li>Contains <span class="emph">lactose</span></li>
+                        <li>Contains <span class="emph">gluten</span></li>
+                    </ul>
+                </div>
+                <div class="box burger-desc-text">
+                    <ul>
+                        <li>Chicken beef of highest quality</li>
+                        <li>Extra <span class="emph"><i>spicy!</i></span></li>
+                    </ul>
+                </div>
+            </div>
         </main>
     </section>
+
+
+
+
+
+
+
+
 
 
     <section id="contact-info">

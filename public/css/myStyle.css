@@ -45,6 +45,7 @@ p.info,
     font-family: 'Great Vibes', cursive;
     font-size: 60px;
     top: -30px;
+    overflow: hidden;
 }
 
 .g {
@@ -74,6 +75,58 @@ p.info,
     opacity: 0.6;
 }
  
+
+
+/* Table styling for burger info */
+.wrapper {
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: 200px 200px 200px;
+    background-color: #000000;
+    color: #000000;
+    margin-left: -5px;
+    justify-content: left;
+}
+
+.box {
+    background-color: #000000;
+    color: #fff;
+    border-radius: 0px;
+    padding: 20px;
+    font-size: 70%;
+}
+
+.burger-heading {
+    font: 600;
+    font-size: 120%;
+    text-align: center;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+.burger-img-container {
+    padding-left: 0px !important;
+    padding-bottom: 0px;
+}
+
+.box ul {
+    padding: 0px;
+}
+
+.burger-desc-text {
+    padding-top: 0px;
+}
+
+
+
+
+
+
+
+
+
+
+
 /* Table styling */
 
 table {
