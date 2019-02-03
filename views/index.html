@@ -5,74 +5,98 @@
 
 
 <head>
-    <title>Page title shown in window title</title>
+    <title>Burger Heaven</title>
     <meta charset="utf-8" />
 
     <!-- CSS FILES -->
     <link rel="stylesheet" type="text/css" href="css/myStyle.css">
 
     <!-- Javascript files -->
-    <script src="https://vuejs.org/js/vue.js"></script>
-    <script src="js/js_script.js"></script>
-    
-    <!--- <script src="js/vue_script.js"></script> -->
-    
+    <!-- <script src="https://vuejs.org/js/vue.js"></script> -->
+    <script type="text/javascript" src="js/menu.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" defer></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" defer></script>
+    <script type="text/javascript" src="js/js_script.js" defer></script>
+    <script type="text/javascript" src="js/App.vue" defer></script>
+
 </head>
 
 <body>
 
-
-    <!-- Logo and brand name here -->
-    <header> </header>
-
-    <div class="header-banner">
-        <div class="g"><h1>Burger Heaven</h1></div>
-        <div id="banderoller"></div>
-    </div>
+    <div class="content">
+        <!-- Logo and brand name here -->
+        <header> </header>
 
 
 
-    <!-- Burger Selection -->
-    <section class="burger-information-section">
-        <main>
-            <h2>Select burger</h2>
-            <br>
-
-            <div class="wrapper">
-                 <div class="box burger-heading" >Supreme</div>
-                 <div class="box burger-heading" >Extra cheese</div>
-                 <div class="box burger-heading" >Chicken royal</div>
-
-                <div class="box burger-img-container"><img src="img/burger1.jpeg" alt="Bacon Burger" title="Burger1" width="200px"></div>
-                <div class="box burger-img-container"><img src="img/burger1.jpeg" alt="Bacon Burger" title="Burger1" width="200px"></div>
-                <div class="box burger-img-container"><img src="img/burger1.jpeg" alt="Bacon Burger" title="Burger1" width="200px"></div>
-                <div class="box burger-desc-text">
-                    <ul>
-                        <li>850 kCal</li>
-                        <li>Contains <span class="emph">lactose</span></li>
-                        <li>Contains <span class="emph">gluten</span></li>
-                    </ul>
-                </div>
-                <div class="box burger-desc-text">
-                    <ul>
-                        <li>600 kCal</li>
-                        <li>Contains <span class="emph">lactose</span></li>
-                        <li>Contains <span class="emph">gluten</span></li>
-                    </ul>
-                </div>
-                <div class="box burger-desc-text">
-                    <ul>
-                        <li>Chicken beef of highest quality</li>
-                        <li>Extra <span class="emph"><i>spicy!</i></span></li>
-                    </ul>
-                </div>
+        <div class="header-banner">
+            <div class="g">
+                <h1>Burger Heaven</h1>
             </div>
-        </main>
-    </section>
+            <div id="banderoller"></div>
+        </div>
 
 
 
 
+        <!-- Burger Selection -->
+        <div id="burgerContainer">
+            <section class="burger-information-section">
+                <main>
+
+                    <div id="selectBurger">
+                        <h1>{{burgerMessage}}</h1>
+                    </div>
+                    <br>
+
+
+
+
+
+
+
+                    <div class="wrapper" id="wrapper">
+                        <div class="row">
+                            <div v-for="(burger, key, index) in burgers" class="card-burger">
+                                <div :id=" 'hamburger-' + key" class="burger-background">
+                                    <div class="box burger-heading"> {{burger.name}} </div>
+                                    <div class="box burger-img-container">
+                                        <img :src='burger.img' alt="burger.name" title="burger.name"></div>
+
+                                    <div class="box burger-desc-text" id="burger-supreme">
+                                        <ul>
+                                            <li> {{burger.kCal}} kCal</li>
+                                            <li v-if="burger.lactose"> Contains <span class="emph"> lactose </span></li>
+                                            <li v-if="burger.gluten">Contains <span class="emph">gluten</span></li>
+                                            <li> </li>
+                                        </ul>
+
+
+
+
+                                        <!-- Here we place the price of the burgers -->
+                                        <div class="burger-price"> {{ burger.price}} </div>
+
+                                        <!-- Here we place the checkbox for the burger -->
+                                        <div class="burger-checkbox" id="getBurgers">
+                                            <input type="checkbox" :id="'submit-'+key" style="display: none;" onClick="selectBurger(this.id)">
+                                            <label :for="'submit-'+key" class="check">
+                                                <svg width="18px" height="18px" viewBox="0 0 18 18">
+                                                    <path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
+                                                    <polyline points="1 9 7 14 15 4"></polyline>
+                                                </svg>
+                                            </label>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </section>
+    </div>
 
 
 
@@ -80,70 +104,149 @@
 
 
     <section id="contact-info">
-    <!-- Custumer Info-->
-    <div id="customer-information">
-        <h3>Customer information</h3>
-        <p>This is where you provide necessary information</p>
+        <!-- Custumer Info-->
+        <div id="customer-information">
+            <h3>Customer information</h3>
+            <p>This is where you provide necessary information</p>
+        </div>
+
+
+
+
+        <div id="app">
+
+            <div class="wrapp-info">
+
+                <form class="vue-form" @submit.prevent="submit">
+                    <!--
+                <div class="error-message">
+                    <p v-show="!email.valid">Please enter a valid email address.</p>
+                </div>
+                <div class="error-message">
+                    <p v-show="!house.valid">Please enter a valid house number.</p>
+                </div>
+                -->
+
+                    <fieldset>
+                        <!-- <legend>Contact information</legend> -->
+                        <div>
+                            <label class="label" for="name">Name</label>
+                            <input type="text" name="name" id="name" required="" v-model="name">
+                        </div>
+                        <div>
+                            <label class="label" for="email">Email</label>
+                            <input type="email" name="email" id="email" required="" :class="{ email , error: !email.valid }"
+                                v-model="email.value">
+                        </div>
+                        <div>
+                            <label class="label" for="street">Street</label>
+                            <input type="text" name="street" id="street" required="" v-model="street">
+                        </div>
+                        <div>
+
+                            <label class="label" for="house">House</label>
+                            <input type="text" name="house" id="house" required="" :class="{ house , error: !house.valid }"
+                                v-model="house.value">
+
+                        </div>
+
+
+
+                        <div>
+                            <label for="payment" class="label">Payment Options</label>
+                            <p class="select">
+                                <select class="budget" v-model="selection.payment">
+                                    <option value="Burger Heaven">Burger Heaven Card</option>
+                                    <option value="Bank Card">Bank Card</option>
+                                    <option value="Credit Card">Credit Card</option>
+                                    <option value="Swish">Swish</option>
+                                </select>
+
+
+                            </p>
+                        </div>
+
+                        <div>
+                            <label for="gender" class="label">Gender</label>
+                            <ul class="vue-form-list">
+                                <li>
+                                    <input type="radio" name="radio-1" id="radio-1" value="Male" v-model="selection.gender">
+                                    <label for="radio-1">Male</label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="radio-2" id="radio-2" value="Female" v-model="selection.gender">
+                                    <label for="radio-2">Female</label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="radio-3" id="radio-3" value="Non-Binary" v-model="selection.gender">
+                                    <label for="radio-3">Non-binary</label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="radio-4" id="radio-4" value="Undisclosed" v-model="selection.gender">
+                                    <label for="radio-2">Undisclosed</label>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- <div>
+                        <label for="features" class="label">Features</label>
+                        <ul class="vue-form-list">
+                            <li v-for="(feature, index) in features">
+                                <input type="checkbox" :value="feature" :id="'cb-feature-'+index" v-model="selection.features">
+                                <label :for="'cb-feature-'+index">{{feature}}</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="checkbox-all" @click="checkAll">
+                                <label for="checkbox-all">Check All</label>
+                            </li>
+                        </ul>
+                    </div> -->
+                        <!-- <div>
+                  <label class="label" for="textarea">Message with Counter</label>
+                  <textarea class="message" name="textarea" id="textarea" required="" 
+                            v-model="message.text" 
+                            :maxlength="message.maxlength"></textarea>
+                  <span class="counter">{{ message.text.length }} / {{ message.maxlength }}</span>
+                </div> -->
+                        <div>
+                            <input type="submit" value="Send Form">
+                        </div>
+                    </fieldset>
+                </form>
+
+
+                <div class="debug">
+                    <div class="Custumer details">
+                        <p class="heading-contact">Customer Details</p>
+
+                        <div>
+                            <p><span class="darker">Name:</span>        {{name}}</p>
+                            <p><span class="darker">Email: </span>      {{email.value}}</p>
+                            <p><span class="darker">Street:</span>      {{street}}</p>
+                            <p><span class="darker">House:</span>       {{house.value}}</p>
+                            <p><span class="darker">Gender:</span>      {{selection.gender}}</p>
+                            <p><span class="darker">Payment: </span>    {{selection.payment}}</p>
+
+                        </div>
+                    </div>
+                    <div class="order-summary">
+                        <p class="heading-contact">Order Summary</p>
+                        <div>
+                            <p id="testing"></p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+
+
+
+    </section>
     </div>
-
-
-    <!--Delivery info-->
-    <h4>Delivery information</h4>
-
-    <main>
-            <form>
-                <p>
-                    <label for="firstname">Full name</label><br>
-                    <input type="text" id="full-name" name="fn" required="required" placeholder="First- and Last name">
-                </p>
-                <p>
-                    <label for="firstname">E-mail</label><br>
-                    <input type="email" id="firstname" name="em" required="required" placeholder="E-mail adress">
-                </p>
-                <p>
-                    <label for="firstname">Street</label><br>
-                    <input type="text" id="firstname" name="st" required="required" placeholder="Street name">
-                </p>
-                <p>
-                    <label for="firstname">House Number</label><br>
-                    <input type="number" id="firstname" name="house" required="required" placeholder="House number">
-                </p>
-
-
-                <p>Payment options</p>
-                <p>
-                    <label for="recipient">Recipient</label><br>
-                    <select id="recipient" name="rcp">
-                        <option>Credit card</option>
-                        <option>Swish</option>
-                        <option>Pay later</option>
-                    </select>
-                </p>
-
-
-                <!-- Buttons -->
-                <p>Gender</p>
-                <input type="radio" name="gender" value="male"> Male<br>
-                <input type="radio" name="gender" value="female"> Female<br>
-                <input type="radio" name="gender" value="Non-binary"> Non-binary<br>
-                <input type="radio" name="gender" value="Undisclosed" checked> Undisclosed <br>
-                <br>
-
-            </form>
-    </main>
-        </section>
-    
-
-                    <!--Submit button-->
-                    <button type="submit"><img src="img/send.png"> <span class="btn-text" id="send-text">Send Info</span></button>
-
-
-
-
-
-
-
-
 
 
 
@@ -154,6 +257,23 @@
         <p> &#169; Burger Inc.
     </footer>
 
+
+
+
+
+
 </body>
+
+
+
+
+
+<script>
+
+
+
+
+</script>
+
 
 </html>
