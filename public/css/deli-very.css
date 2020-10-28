@@ -1,6 +1,7 @@
 body {
 	margin: 0;
 	padding: 0;
+	background-color: lightblue;
 }
 
 .view-box {
@@ -32,6 +33,7 @@ body {
 	text-align: center;
 }
 
+
 #orderList {
 	top:1em;
 	left:1em;
@@ -40,4 +42,11 @@ body {
 	color:black;
 	background: rgba(255,255,255, 0.5);
 	padding: 1em;
+}
+
+.myDiv {
+  background-color: yellow;
+  width: 70px;
+  height: 60px;
+  border-radius: 25px;
 }
