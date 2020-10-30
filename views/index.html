@@ -7,16 +7,111 @@
 		<meta charset="utf-8"/>
     </head>
     <body>
-        <h1>Vegard Pettersson!!!</h1>
-		<h1>A heading</h1>
-		<p>A paragraph</p>
-		<img src="img/ffs.jpg" alt="Girl in a jacket">
+		<main>
+			<h1>Vegards Bodega</h1>
 		
-		<h1>A heading</h1>
-		<div class="myDiv">
-			<h2>This is a heading in a div element</h2>
+		</main>
+		
+		<section>
+		<h2>Välj Käk</h2>
+		<p>Här väljer du ditt käk</p>
+		<table class="burgerTable">
+			<thead>
+				<tr>
+					<th>Cartoon burger 1</th>
+					<th>TuTurkeyburger</th>
+					<th>Freedomburger</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><img class="burger" src="img/burger.png" alt="Girl in a jacket"></td>
+					<td><img class="burger" src="img/tuturkeyburger.png" alt="Girl in a jacket"></td>
+					<td><img class="burger" src="img/freeBurger.png" alt="Girl in a jacket"></td>
+					
+				</tr>
+				<tr>
+					<td>
+						<ul>
+							<li>OOOOOOsst, bästa babyBelen någonsing</li>
+							<li>Köööött, FoR the Gains (extra protein)</li>
+							<li>Ekologiskt surdegsbröd</li>
+						</ul>
+					</td>
+					<td>
+						<ul>
+							<li>Fåglarna är tagna dirket från vår Norska gård</li>
+							<li>Dressingen gjord på finaste ansjovisen</li>
+							<li>Mumma!</li>
+						</ul>
+					</td>
+					<td>
+						<ul>
+							<li>Denna burgare är som Bane i Batman, Född i friheten!! </li>
+							<li>Doftar som USA</li>
+							<li>Smakar som gamla mynt</li>
+						</ul>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		
+		</section>
+		<section id="contact">
+		<h2>Bodegans info om Bodegans besökare</h2>
+		<p>Här fyller du i din information</p>
+		
+        <form>
+			<p>
+				<label for="firstname">Name</label><br>
+				<input type="text" id="firstname" name="fn" required="required" placeholder="Full name">
+			</p>
+			<p>
+				<label for="email">Email</label><br>
+				<input type="email" id="email" name="em" required="required" placeholder="E-mail address">
+			</p>
+			<p>
+				<label for="street">Street</label><br>
+				<input type="text" id="street" name="em" required="required" placeholder="Street name">
+			</p>
+			<p>
+				<label for="house">House Number</label><br>
+				<input type="text" id="number" name="em" required="required" placeholder="House number">
+			</p>
+			<p>
+				<label for="payment">Payment method</label><br>
+				<select id="payment" name="rcp">
+					<option>Klarna</option>
+					<option>Card</option>
+					<option>Pay Pal</option>
+					<option>Swisch</option>
+				</select>
+			</p>
+			<p>
+				<p>Pick your favorite beverage:</p>
+				<input type="radio" id="ol" name="dryck" value="Ol">
+				<label for="ol">Öl</label><br>
+				<input type="radio" id="cider" name="dryck" value="Cider">
+				<label for="cider">Cider</label><br>
+				<input type="radio" id="other" name="dryck" value="Other">
+				<label for="other">Other</label><br>
+				
+			</p>
+			
+        </form>
+			<input type="submit" value="Skicka ordern">
+		</section>
+		
+		<!-- <h1>A heading</h1> -->
+		<!-- <div class="myDiv">
+			<img class="burger" src="img/burger.png" alt="Girl in a jacket">
+		
 			<p>This is some text in a div element.</p>
-		</div>
+		</div> -->
+		<footer>
+		<p>&copy Vegards Bodega AB </p>
+		</footer>
 		
     </body>
 </html>
