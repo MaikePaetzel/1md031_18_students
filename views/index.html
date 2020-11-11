@@ -3,62 +3,58 @@
     <head>
         <title>DELI-VERY</title>
 		<link rel=stylesheet type="text/css" href="css/deli-very.css">
+		<script src="https://vuejs.org/js/vue.js"></script>
+		<script src="js/js_script.js"></script>
+		<script src="js/vue_script.js"></script>
 		<script type="text/javascript" src="js\deli-very.js"></script>
 		<meta charset="utf-8"/>
     </head>
     <body>
-		<main>
-			<h1>Vegards Bodega</h1>
+		<main id="header-img">
+			
 		
 		</main>
 		
-		<section>
-		<h2>Välj Käk</h2>
-		<p>Här väljer du ditt käk</p>
-		<table class="burgerTable">
-			<thead>
-				<tr>
-					<th>Cartoon burger 1</th>
-					<th>TuTurkeyburger</th>
-					<th>Freedomburger</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td><img class="burger" src="img/burger.png" alt="Girl in a jacket"></td>
-					<td><img class="burger" src="img/tuturkeyburger.png" alt="Girl in a jacket"></td>
-					<td><img class="burger" src="img/freeBurger.png" alt="Girl in a jacket"></td>
-					
-				</tr>
-				<tr>
-					<td>
-						<ul>
-							<li>OOOOOOsst, bästa babyBelen någonsing</li>
-							<li>Köööött, FoR the Gains (extra protein)</li>
-							<li>Ekologiskt surdegsbröd</li>
-						</ul>
-					</td>
-					<td>
-						<ul>
+		<h1 id="header-text">Vegards Bodega</h1>
+		<section class="burgerSection">
+		
+		
+			<div class="wrapper">
+				<div class="box a">
+					<p>Här väljer du ditt käk:</p>
+				</div>
+				<div class="box b">
+					<p>Cartoon burger 1</p>
+					<img class="burger" src="img/burger.png" alt="Girl in a jacket">
+					<ul>
+						<li>OOOOOOsst, bästa babyBelen någonsing</li>
+						<li>Köööött, FoR the Gains (extra protein)</li>
+						<li>Ekologiskt surdegsbröd</li>
+					</ul>
+				</div>
+				<div class="box c">
+					<p>TuTurkeyburger</p>
+					<img class="burger" src="img/tuturkeyburger.png" alt="Girl in a jacket">
+					<ul>
 							<li>Fåglarna är tagna dirket från vår Norska gård</li>
 							<li>Dressingen gjord på finaste ansjovisen</li>
 							<li>Mumma!</li>
-						</ul>
-					</td>
-					<td>
-						<ul>
+					</ul>
+				</div>
+				<div class="box d">
+					<p>Freedomburger</p>
+					<img class="burger" src="img/freeBurger.png" alt="Girl in a jacket">
+					<ul>
 							<li>Denna burgare är som Bane i Batman, Född i friheten!! </li>
 							<li>Doftar som USA</li>
 							<li>Smakar som gamla mynt</li>
-						</ul>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-		
+					</ul>
+				</div>
+				
+			</div>
 		
 		</section>
-		<section id="contact">
+		<section class="contact">
 		<h2>Bodegans info om Bodegans besökare</h2>
 		<p>Här fyller du i din information</p>
 		
@@ -100,7 +96,7 @@
 			</p>
 			
         </form>
-			<input type="submit" value="Skicka ordern">
+			<input type="submit" id="button1" value="Skicka ordern">
 		</section>
 		
 		<!-- <h1>A heading</h1> -->
