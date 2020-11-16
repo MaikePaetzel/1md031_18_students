@@ -7,7 +7,8 @@ function MenuItem(name, kcal, gluten, lactose) {
         return this.name;
     };
 }
-
-// Objects are then instantiated using the new keyword
-var burger = new MenuItem('Maike', 130, true, false);
-console.log( burger.namn() ); 
+var burger1= new MenuItem('Cheese Burger', 688, true, true);
+var burger2 = new MenuItem('Turkey Burger ', 753, false, false);
+var burger3 = new MenuItem('American Burger', 1300, true, true);
+let burgers=[burger1,burger2,burger3];
+console.log( burgers[0].namn() ); 
