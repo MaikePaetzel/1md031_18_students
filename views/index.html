@@ -1,113 +1,66 @@
-<!DOCTYPE html>
-<html lang="en">
+
     <head>
         <title>DELI-VERY</title>
 		<link rel=stylesheet type="text/css" href="css/deli-very.css">
+		<script type="text/javascript" src="js/menu.js" defer></script>
 		<script src="https://vuejs.org/js/vue.js"></script>
 		<script src="js/js_script.js"></script>
 		<script src="js/vue_script.js"></script>
 		<script type="text/javascript" src="js\deli-very.js"></script>
+		<script src="js/js_script.js"defer></script>
+		<script src="js/vue_script.js"defer></script>
+		<script type="text/javascript" src="js\deli-very.js"defer></script>
+		
 		<meta charset="utf-8"/>
     </head>
     <body>
-		<main id="header-img">
-			
-		
+
 		</main>
 		
 		<h1 id="header-text">Vegards Bodega</h1>
+		<div id="burgerList">
+			 
+	
+			<l >
+				<li v-for="burger in burgers" v-if="burger.stock > 0" > 
+					{{ burger.name }}
+					
+				</li>
+				<li v-for="burger in burgers" v-if="burger.stock > 0" > 
+					
+				</li>
+			</ul>
+		</div>
 		<section class="burgerSection">
 		
+			
 		
 			<div class="wrapper">
 				<div class="box a">
-					<p>Här väljer du ditt käk:</p>
+
 				</div>
 				<div class="box b">
 					<p>Cartoon burger 1</p>
-					<img class="burger" src="img/happy.png" alt="Girl in a jacket">
+					<img class="burger" src="img/burger.png" alt="Girl in a jacket">
+					<img class="burger" src="img/Cheesecropped-1.png" alt="Girl in a jacket">
 					<ul>
 						<li>OOOOOOsst, bästa babyBelen någonsing</li>
 						<li>Köööött, FoR the Gains (extra protein)</li>
-						<li>Ekologiskt surdegsbröd</li>
-					</ul>
+
 				</div>
 				<div class="box c">
 					<p>TuTurkeyburger</p>
-					<img class="burger" src="img/chicken.jpg" alt="Girl in a jacket">
+					<img class="burger" src="img/tuturkeyburger.png" alt="Girl in a jacket">
+					<img class="burger" src="img/Halloumicropped.png" alt="Girl in a jacket">
 					<ul>
 							<li>Fåglarna är tagna dirket från vår Norska gård</li>
 							<li>Dressingen gjord på finaste ansjovisen</li>
-							<li>Mumma!</li>
-					</ul>
+
 				</div>
 				<div class="box d">
 					<p>Freedomburger</p>
-					<img class="burger" src="img/american.png" alt="Girl in a jacket">
+					<img class="burger" src="img/freeBurger.png" alt="Girl in a jacket">
+					<img class="burger" src="img/Klassikercropped.png" alt="Girl in a jacket">
 					<ul>
 							<li>Denna burgare är som Bane i Batman, Född i friheten!! </li>
 							<li>Doftar som USA</li>
-							<li>Smakar som gamla mynt</li>
-					</ul>
-				</div>
-				
-			</div>
-		
-		</section>
-		<section class="contact">
-		<h2>Bodegans info om Bodegans besökare</h2>
-		<p>Här fyller du i din information</p>
-		
-        <form>
-			<p>
-				<label for="firstname">Name</label><br>
-				<input type="text" id="firstname" name="fn" required="required" placeholder="Full name">
-			</p>
-			<p>
-				<label for="email">Email</label><br>
-				<input type="email" id="email" name="em" required="required" placeholder="E-mail address">
-			</p>
-			<p>
-				<label for="street">Street</label><br>
-				<input type="text" id="street" name="em" required="required" placeholder="Street name">
-			</p>
-			<p>
-				<label for="house">House Number</label><br>
-				<input type="text" id="number" name="em" required="required" placeholder="House number">
-			</p>
-			<p>
-				<label for="payment">Payment method</label><br>
-				<select id="payment" name="rcp">
-					<option>Klarna</option>
-					<option>Card</option>
-					<option>Pay Pal</option>
-					<option>Swisch</option>
-				</select>
-			</p>
-			<p>
-				<p>Pick your favorite beverage:</p>
-				<input type="radio" id="ol" name="dryck" value="Ol">
-				<label for="ol">Öl</label><br>
-				<input type="radio" id="cider" name="dryck" value="Cider">
-				<label for="cider">Cider</label><br>
-				<input type="radio" id="other" name="dryck" value="Other">
-				<label for="other">Other</label><br>
-				
-			</p>
-			
-        </form>
-			<input type="submit" id="button1" value="Skicka ordern">
-		</section>
-		
-		<!-- <h1>A heading</h1> -->
-		<!-- <div class="myDiv">
-			<img class="burger" src="img/burger.png" alt="Girl in a jacket">
-		
-			<p>This is some text in a div element.</p>
-		</div> -->
-		<footer>
-		<p>&copy Vegards Bodega AB </p>
-		</footer>
-		
-    </body>
-</html>
