@@ -1,0 +1,128 @@
+/* ------------STYLE--------------*/
+/* --------Agnes Olofsson---------*/
+
+@import url("reset.css");
+@import url("https://fonts.googleapis.com/css?family=Droid+Serif|Share+Tech+Mono");
+
+@media screen and (max-width: 95%) {
+  h1 {
+    font-size: 6vw;
+  }
+}
+
+.rubrik{
+  font-size: 20pt;
+  margin: 0vw 10vw;
+  padding: 4px;
+  height: 240px;
+  overflow: hidden;
+}
+
+#HL{
+  position: absolute;
+  width: 100%;
+  height: auto;
+  padding: 7vw 16vw;
+}
+
+#bild{
+  url("path/to/image.png");
+  opacity: 0.2;
+}
+
+body {
+  font-family: "Droid Serif", sana-serif;
+  font-size: 1.3em;
+}
+
+.burgarMeny{
+  color: #ffffff;
+  background-color: #000000;
+  margin: 1vw 10vw;
+  text-indent: 1%;
+  padding: 2% 3%;
+  border: 3px dotted #ffffff;
+}
+
+.menyTabell{
+  display: grid;
+  grid-gap: auto;
+  grid-template-columns: 1fr 1fr 1fr;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.visaInfo{
+  border: 3px dotted #000000;
+  margin: 1vw 10vw;
+  text-indent: 1%;
+  padding: 2% 3%;
+  background-color: #3456
+}
+
+.formulär{
+  border: 3px dotted #000000;
+  margin: 1vw 10vw;
+  text-indent: 1%;
+  padding: 2% 3%;
+}
+
+.footer{
+  font-size: 13px;
+  color: grey;
+  padding: 3% 0% 0%
+}
+
+button:hover{
+  color: white;
+  background-color: green;
+}
+
+/*--------------------Kod från html/css---------------------*/
+
+/*#ruta{
+border: 3px double #ffffff;
+text-indent: 0px;
+text-align: center;
+width: 50%;
+}*/
+/*
+#under{
+text-decoration: underline;
+}*/
+
+/*.burgare {
+background-color: #000000;
+color: #ffffff;
+padding: 10px 22px;
+font-size: 13pt;
+}*/
+
+/*.allergi{	grid-column: 1 / span 3;
+margin: 0px 200px;}*/
+/*
+.A{	grid-column: 1;
+grid-row: 2}
+.B{	grid-column: 2;
+grid-row: 2}
+.C{	grid-column: 3;
+grid-row: 2}
+
+.infoA{	grid-column: 1;
+grid-row: 3;}
+.infoB{	grid-column: 2;
+grid-row: 3;}
+.infoC{	grid-column: 3;
+grid-row: 3;}
+
+/*#menyy{
+width: 820px;
+}*/
+
+/*#gluten{
+font-weight: bold;
+}
+
+#laktos{
+font-weight: bold;
+}*/

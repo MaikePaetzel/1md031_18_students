@@ -1,9 +1,337 @@
+<!--______________HTML______________-->
+<!--_________Agnes Olofsson_________-->
+
 <!DOCTYPE html>
+
 <html lang="en">
-    <head>
-        <title>DELI-VERY</title>
-    </head>
-    <body>
-        <h1>Hello World!!!</h1>
-    </body>
-</html>
+
+<!-- länkar och kopplade skript, kan vara någon som är överflödig men vågar inte ta bort någon -->
+
+<head>
+  <script src="/socket.io/socket.io.js" defer></script>
+  <script src="https://vuejs.org/js/vue.js" defer></script>
+  <script type="text/javascript" src="/js/meny.js" defer></script>
+  <script src="js/js_script.js" defer></script>
+  <script src="js/vue_script.js" defer></script>
+  <title>Tjolahopp</title>
+  <meta charset="utf-8"/>
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/deli-very.css">
+</head>
+
+<!-- Header, endast bild och rubrik kopplat till denna -->
+
+<body>
+  <header>
+    <section class="rubrik">
+      <h1> <span id="HL">Välkommen till AggesBurgers</span> </h1>
+      <span id="bild"><img src="https://www.habitatworld.com/_imgs/diner-8.jpg" alt="header" width="100%"></span>
+    </section>
+  </header>
+
+  <!-- Main, sidans huvudinehåll med både meny oh formulär osv.  -->
+
+  <main>
+    <section class='burgarMeny'>
+
+      <h2> Meny </h2>
+      <h3>Våra burgare</h3>
+
+      <div class='menyTabell' id="tabell">
+        <div v-for='(burgare, index) in allaBurgare' class="menyCell">
+          <h4>{{burgare.namn}}</h4>
+          <img v-bind:src='burgare.bild' width='200'>
+          <ul>
+            <li>{{burgare.kcal}} kCal</li>
+            <li id="allergi" v-if=burgare.gluten>Inehåller gluten</li>
+            <li id="allergi" v-if=burgare.laktos>Inehåller laktos</li>
+            <li>Topping: {{burgare.topping}}</li>
+          </ul>
+          <input type="checkbox" id='bur' name="allaBurgare" :value="burgare.namn">
+          <label for="bur">välj burgare</label>
+        </div>
+      </div>
+    </section>
+
+    <!-- Formuläret där hunden fyller i sin information -->
+
+    <section class="formulär">
+      <h3>Kund information</h3>
+      <p>Vänligen fyll i nödvändig information för att kunna genomföra din beställning. </p>
+
+      <form method="post" action="#">
+        <p><label for="namn"> <b>Namn</b> </label> <br>
+          <input type="text" id="namn" name="namn" required="Obligatorisk" placeholder="Ex. Agge Karlsson"> </p>
+          <p><label for="mail"> <b>Mailadress</b> </label> <br>
+            <input type="email" id="mail" name="mail" required="Obligatorisk" placeholder="Ex. agge.karlsson@mail.se"> </p>
+            <!--<p><label for="adress"> <b>Adress</b> </label> <br>
+            <input type="text" id="adress" name="adress" required="Obligatorisk" placeholder="Ex. Aggevägen 5A"> </p>
+            <p><label for="postnr"> <b>Postnummer</b> </label> <br>
+            <input type="number" id="postnr" name="postnr" required="Obligatorisk" placeholder="Ex. 12345"> </p>-->
+
+            <p><label for="betalning"> <b>Betalmetod</b> </label> <br>
+              <select id="betalning" name="betalning" required="Obligatorisk">
+                <option>Swish</option>
+                <option>Betalkort</option>
+                <option>Klarna</option>
+              </select></p>
+
+              <p> <label for="kön"> <b>Kön</b> </label> <br>
+                <label for="k">Kvinna</label>
+                <input type="radio" id='Kvinna' name="kön" value='Kvinna'> <br>
+                <label for="M">Man</label>
+                <input type="radio" id='Man' name="kön" value="Man"> <br>
+                <label for="ej">Vill ej ange</label>
+                <input type="radio" id='Vill ej ange' name="kön" value="Vill ej ange"></p>
+
+              </form>
+
+              <!-- Få in kartan på sidan -->
+
+              <h4> Ange beställningsadress genom att klicka på kartan! </h4>
+              <a href="/dispatcher" target="_blank"> Open dispatcher in new window </a>
+              <div class="view-box">
+                <div id="dots" v-on:click="visaOrder">
+                  <div
+                  v-for="(order, key) in nyBeställning"
+                  v-bind:style="{ left: nyBeställning.details.x + 'px', top: nyBeställning.details.y + 'px'}">
+                  T
+                </div>
+              </div>
+            </div>
+
+            <!-- Knappen för beställning, kopplad både till att samla in den ifyllda orden samt att visa hela beställningen med både formulärsvar och de burgare som vill beställas -->
+            <div id="orders">
+              <button type="submit" id='myButton' v-on:click='buttonClicked()'><img src="\img\knapp.jpg" width="50">Lägg beställning!</button>
+            </div>
+
+
+          </section>
+
+          <!-- Innehållet i den ruta som visas när man lägger en beställning -->
+
+          <!--kundInfo[3]-->
+
+          <div v-if='click' class="visaInfo">
+            <h3>Din information</h3>
+            <li>Namn: {{kundInfo[0]}}</li>
+            <li>Mailadress: {{kundInfo[1]}}</li>
+            <li>Betalningsmetod: {{kundInfo[2]}}</li>
+            <li>Kön: {{kundInfo[3]}}</li>
+            <li>Adress: {{nyBeställning.details.x+'x' +'/'+ nyBeställning.details.y +'y'}}</li>
+            <h3>Din beställning</h3>
+            <!--<li>{{'Mat: ' + burgarLista}}</li>-->
+            <li>Mat: {{burgarLista.join(", ")}}</li>
+          </div>
+        </main>
+
+        <!-- Sidfoten, i exemlpet är det här copyright-text men jag tykte det var kull med ett litet burgar citat -->
+
+        <footer class="footer" align="center">
+          <hr>
+          <p>Månadens citat: <i> en burgare om dagen är bra för magen </i><p/>
+          </footer>
+        </body>
+        </html>
+
+
+
+        <!--______________________ Kod från html/css____________________________
+
+        <section class="kontakt">
+        <p id="kontakt">
+        <h3>Kontakt </h3>
+        <p>Tel. 123 456 78 90</p>
+        <p>Mail: agge.burgare@aggemail.se</p>
+      </p>
+    </section> -->
+
+    <!-- html oh css
+    <section id="väljBurgare">
+    <h2> Meny </h2>
+    <h3>Våra burgare</h3>
+    <div class="menyTabell" id="tabell">
+    <div class="burg allergi" id="ruta">
+    <span id="under">Allergi information</span>  <br>
+    Samtliga burgare inehåller <span id="gluten">gluten </span> och <span id="laktos">laktos</span>.
+  </div>
+  <div class="burgare" v-for='burgare av allaBurgare'>
+  <h3>Klassisk burgare</h3>
+  <img src="\img\burgare1.jpg" alt="klassisk" width="250px">
+</div>
+<div class="burgare B">
+<h3>Baconburgare</h3>
+<img src="\img\burgare2.jpg" alt="bacon" width="250px">
+</div>
+<div class="burgare C">
+<h3>Lyxburgare</h3>
+<img src="\img\burgare3.jpg" alt="lyx" width="250px">
+</div>
+
+<div class="burgare infoA">
+
+<b><dt>Topping:</dt></b>
+<dd>Sallad</dd>
+<dd>Tomat</dd>
+<dd>Lök</dd>
+<dd>Ost</dd>
+<dd>Orginaldressing</dd>
+<b><dt>Tillval:</dt></b>
+<dd>Bacon</dd>
+<dd>Pommes</dd>
+
+</div>
+<div class="burgare infoB">
+
+<b><dt>Topping:</dt></b>
+<dd>Sallad</dd>
+<dd>Bacon</dd>
+<dd>Lök</dd>
+<dd>ost</dd>
+<dd>Tryffelmajo</dd>
+<b><dt>Tillbehör:</dt></b>
+<dd>Pommes</dd>
+<b><dt>Tillval:</dt></b>
+<dd>Tomat</dd>
+<dd>Dipp</dd>
+
+</div>
+<div class="burgare infoC">
+
+<b><dt>Topping:</dt></b>
+<dd>Sallad</dd>
+<dd>Tomat</dd>
+<dd>Lök</dd>
+<dd>ost</dd>
+<dd>Chililmajo</dd>
+<b><dt>Tillbehör:</dt></b>
+<dd>Pommes</dd>
+<dd>Dipp</dd>
+<b><dt>Tillval:</dt></b>
+<dd>Bacon</dd>
+
+</div>
+</div>
+</section>
+
+<section class="kundInfo">
+<h3>Kund information</h3>
+<p>Vänligen fyll i nödvändig information för att kunna genomföra din beställning. </p>
+<p id="formulär">
+<form>
+<p><label for="Namn"> <b>Namn</b> </label> <br>
+<input type="text" id="Namn" name="namn" required="Obligatorisk" placeholder="Ex. Agge Karlsson"> </p>
+<p><label for="Mailadress"> <b>Mailadress</b> </label> <br>
+<input type="email" id="mail" name="Mail" required="Obligatorisk" placeholder="Ex. agge.karlsson@mail.se"> </p>
+<p><label for="Adress"> <b>Adress</b> </label> <br>
+<input type="text" id="adress" name="ad" required="Obligatorisk" placeholder="Ex. Aggevägen 5A"> </p>
+<p><label for="postnr"> <b>Postnummer</b> </label> <br>
+<input type="number" id="postnr" name="nr" required="Obligatorisk" placeholder="Ex. 12345"> </p>
+
+</p>
+<p><label for="Betalning"> <b>Betalmetod</b> </label> <br>
+<select id="betalning" name="rcp">
+<option>Swish</option>
+<option>Betalkort</option>
+<option>Klarna</option>
+</select>
+</p>
+
+<p> <label for="Kön"> <b>Kön</b> </label> <br>
+<label for="K">Kvinna</label>
+<input type="radio" name="Kön"> <br>
+<label for="M">Man</label>
+<input type="radio" name="Kön"> <br>
+<label for="ej">Vill ej ange</label>
+<input type="radio" name="Kön">
+</p>
+<button type="submit"> <img src="\img\knapp.jpg" width="50">Place Order!</button>
+</form>
+</section>-->
+
+<!--html
+<p id="ruta"> <span id="under">Allergi information</span>  <br> Samtliga burgare inehåller <span id="gluten">gluten </span> och <span id="laktos">laktos</span>.</p>
+
+<p>
+<table id="menyy">
+<thead>
+<tr>
+<th>Klassisk burgare</th>
+<th>Baconburgare</th>
+<th>Lyxburgare</th>
+</tr>
+</thead>
+<tbody>
+<tr align ="center" style="hight:600px;">
+<td> <img src="\img\burgare1.jpg" alt="klassisk" width="200"></td>
+<td> <img src="\img\burgare2.jpg" alt="bacon" width="200"></td>
+<td> <img src="\img\burgare3.jpg" alt="lyx" width="200"></td>
+</tr>
+<p>
+<tr style="text-indent: 50px;">
+<td><dl>
+<b><dt>Topping:</dt></b>
+<dd>Sallad</dd>
+<dd>Tomat</dd>
+<dd>Lök</dd>
+<dd>Ost</dd>
+<dd>Orginaldressing</dd>
+<b><dt>Tillval:</dt></b>
+<dd>Bacon</dd>
+<dd>Pommes</dd>
+</dl></td>
+<td><dl>
+<b><dt>Topping:</dt></b>
+<dd>Sallad</dd>
+<dd>Bacon</dd>
+<dd>Lök</dd>
+<dd>ost</dd>
+<dd>Tryffelmajo</dd>
+<b><dt>Tillbehör:</dt></b>
+<dd>Pommes</dd>
+<b><dt>Tillval:</dt></b>
+<dd>Tomat</dd>
+<dd>Dipp</dd>
+</dl></td>
+<td><dl>
+<b><dt>Topping:</dt></b>
+<dd>Sallad</dd>
+<dd>Tomat</dd>
+<dd>Lök</dd>
+<dd>ost</dd>
+<dd>Chililmajo</dd>
+<b><dt>Tillbehör:</dt></b>
+<dd>Pommes</dd>
+<dd>Dipp</dd>
+<b><dt>Tillval:</dt></b>
+<dd>Bacon</dd>
+</dl></td>
+</tr></p>
+</tbody>
+</table>
+
+<h3>Dryck</h3>
+<table style="width:600px;">
+<thead align="center">
+<tr>
+<th>Öl</th>
+<th>Vin</th>
+</tr>
+</thead>
+<tbody style="text-indent: 50px;">
+<tr>
+<td><ul>
+<li>Lager</li>
+<li>IPA</li>
+<li>ALE</li>
+</ul></td>
+<td><ul>
+<li>Rött</li>
+<li>Vitt</li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+</p>
+-->
