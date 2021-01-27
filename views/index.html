@@ -1,9 +1,66 @@
-<!DOCTYPE html>
-<html lang="en">
+
     <head>
         <title>DELI-VERY</title>
+		<link rel=stylesheet type="text/css" href="css/deli-very.css">
+		<script type="text/javascript" src="js/menu.js" defer></script>
+		<script src="https://vuejs.org/js/vue.js"></script>
+		<script src="js/js_script.js"></script>
+		<script src="js/vue_script.js"></script>
+		<script type="text/javascript" src="js\deli-very.js"></script>
+		<script src="js/js_script.js"defer></script>
+		<script src="js/vue_script.js"defer></script>
+		<script type="text/javascript" src="js\deli-very.js"defer></script>
+		
+		<meta charset="utf-8"/>
     </head>
     <body>
-        <h1>Hello World!!!</h1>
-    </body>
-</html>
+
+		</main>
+		
+		<h1 id="header-text">Vegards Bodega</h1>
+		<div id="burgerList">
+			 
+	
+			<l >
+				<li v-for="burger in burgers" v-if="burger.stock > 0" > 
+					{{ burger.name }}
+					
+				</li>
+				<li v-for="burger in burgers" v-if="burger.stock > 0" > 
+					
+				</li>
+			</ul>
+		</div>
+		<section class="burgerSection">
+		
+			
+		
+			<div class="wrapper">
+				<div class="box a">
+
+				</div>
+				<div class="box b">
+					<p>Cartoon burger 1</p>
+					<img class="burger" src="img/burger.png" alt="Girl in a jacket">
+					<img class="burger" src="img/Cheesecropped-1.png" alt="Girl in a jacket">
+					<ul>
+						<li>OOOOOOsst, bästa babyBelen någonsing</li>
+						<li>Köööött, FoR the Gains (extra protein)</li>
+
+				</div>
+				<div class="box c">
+					<p>TuTurkeyburger</p>
+					<img class="burger" src="img/tuturkeyburger.png" alt="Girl in a jacket">
+					<img class="burger" src="img/Halloumicropped.png" alt="Girl in a jacket">
+					<ul>
+							<li>Fåglarna är tagna dirket från vår Norska gård</li>
+							<li>Dressingen gjord på finaste ansjovisen</li>
+
+				</div>
+				<div class="box d">
+					<p>Freedomburger</p>
+					<img class="burger" src="img/freeBurger.png" alt="Girl in a jacket">
+					<img class="burger" src="img/Klassikercropped.png" alt="Girl in a jacket">
+					<ul>
+							<li>Denna burgare är som Bane i Batman, Född i friheten!! </li>
+							<li>Doftar som USA</li>
